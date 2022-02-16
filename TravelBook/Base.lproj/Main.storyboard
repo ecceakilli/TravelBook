@@ -1,24 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tL6-kb-8w6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--List View Controller-->
+        <scene sceneID="Jf6-VF-W3H">
+            <objects>
+                <viewController id="XQd-CM-Q5l" customClass="ListViewController" customModule="TravelBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ig2-St-avE" customClass="List">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="08t-P9-4lX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XQd-CM-Q5l" id="GyX-no-IVP"/>
+                                    <outlet property="delegate" destination="XQd-CM-Q5l" id="IV9-si-e73"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fp4-bG-Gro"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fp4-bG-Gro" firstAttribute="bottom" secondItem="08t-P9-4lX" secondAttribute="bottom" id="R2c-Z3-YPa"/>
+                            <constraint firstItem="08t-P9-4lX" firstAttribute="leading" secondItem="Fp4-bG-Gro" secondAttribute="leading" id="SBp-Pt-uf2"/>
+                            <constraint firstItem="08t-P9-4lX" firstAttribute="top" secondItem="Fp4-bG-Gro" secondAttribute="top" id="d0G-EM-9Gx"/>
+                            <constraint firstItem="Fp4-bG-Gro" firstAttribute="trailing" secondItem="08t-P9-4lX" secondAttribute="trailing" id="lNA-gm-Pxk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="d1M-fX-dEu">
+                        <barButtonItem key="rightBarButtonItem" title="Ekle +" id="pUX-LI-e0J">
+                            <inset key="largeContentSizeImageInsets" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
+                            <connections>
+                                <action selector="addButton:" destination="XQd-CM-Q5l" id="e75-oN-kAl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="pUX-LI-e0J" id="uyC-1q-HJp"/>
+                        <outlet property="tableView" destination="08t-P9-4lX" id="DtW-9f-Bj7"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toViewController" id="2Od-Ma-sIb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xC0-4S-MS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="231.8840579710145" y="140.625"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TravelBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wwi-xD-buD">
+                                <rect key="frame" x="0.0" y="233" width="414" height="571"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7LC-2S-U6Y"/>
+                                    <outletCollection property="gestureRecognizers" destination="xcG-IS-8Qx" appends="YES" id="LQv-sP-G7R"/>
+                                </connections>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="utM-8v-p1d">
+                                <rect key="frame" x="70" y="118" width="274" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="comment" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJm-I1-WYd">
+                                <rect key="frame" x="70" y="162" width="274" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvQ-ar-cnM">
+                                <rect key="frame" x="115" y="825" width="184" height="31"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b0p-pQ-HST"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="FvQ-ar-cnM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="4Zb-UH-NoC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FvQ-ar-cnM" secondAttribute="trailing" constant="115" id="4na-M1-H2T"/>
+                            <constraint firstItem="wwi-xD-buD" firstAttribute="top" secondItem="uJm-I1-WYd" secondAttribute="bottom" constant="37" id="7Oo-kc-di9"/>
+                            <constraint firstItem="uJm-I1-WYd" firstAttribute="top" secondItem="utM-8v-p1d" secondAttribute="bottom" constant="10" id="8Rj-2u-pbK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uJm-I1-WYd" secondAttribute="trailing" constant="70" id="AeP-oD-ezf"/>
+                            <constraint firstItem="wwi-xD-buD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Dgm-0f-bSE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FvQ-ar-cnM" secondAttribute="bottom" constant="6" id="Hkl-tp-Rza"/>
+                            <constraint firstItem="utM-8v-p1d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="IyB-7g-nrB"/>
+                            <constraint firstItem="FvQ-ar-cnM" firstAttribute="top" secondItem="wwi-xD-buD" secondAttribute="bottom" constant="21" id="aaI-G3-CYO"/>
+                            <constraint firstItem="utM-8v-p1d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="dca-ar-ruC"/>
+                            <constraint firstItem="uJm-I1-WYd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="gp7-Dw-iIY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="utM-8v-p1d" secondAttribute="trailing" constant="70" id="jl0-Zz-V9J"/>
+                            <constraint firstItem="wwi-xD-buD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uFM-2R-wTT"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="e7O-Bc-X95" appends="YES" id="q6r-hP-9z9"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="UgU-Xv-nXF"/>
+                    <connections>
+                        <outlet property="commentText" destination="uJm-I1-WYd" id="Mu0-3o-rus"/>
+                        <outlet property="mapView" destination="wwi-xD-buD" id="G5k-wD-Vkj"/>
+                        <outlet property="nameText" destination="utM-8v-p1d" id="fZ8-Jj-hS3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="xcG-IS-8Qx">
+                    <connections>
+                        <action selector="chooseLocation:" destination="BYZ-38-t0r" id="tMC-pw-A15"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="e7O-Bc-X95">
+                    <connections>
+                        <action selector="closeKeyboard:" destination="BYZ-38-t0r" id="NwD-Zp-nRE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dqp-d9-6UM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tL6-kb-8w6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pyG-ml-nVb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XQd-CM-Q5l" kind="relationship" relationship="rootViewController" id="Mmj-6Q-HhK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PNP-rR-Nlf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-678.26086956521749" y="140.625"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
